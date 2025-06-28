@@ -13,7 +13,10 @@ pipeline {
     stage('Install') {
       steps {
         dir('frontend') {
-          sh 'npm install'
+          sh '''
+            npm config set cache ./npm-cache --global
+            npm install
+          '''
         }
       }
     }
@@ -32,6 +35,21 @@ pipeline {
           sh 'npm run build'
         }
       }
+    }
+  }
+
+  post {
+    always {
+      echo 'Cleaning up workspace...'
+      sh 'rm -rf frontend/npm-cache'
+    }
+
+    success {
+      echo 'Build succeeded!'
+    }
+
+    failure {
+      echo 'Build failed!'
     }
   }
 }
