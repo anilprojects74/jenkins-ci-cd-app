@@ -14,7 +14,7 @@ pipeline {
       steps {
         dir('frontend') {
           sh '''
-            npm config set cache ./npm-cache --global
+            npm config set cache ./npm-cache
             npm install
           '''
         }
