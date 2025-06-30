@@ -6,7 +6,6 @@ pipeline {
   }
 
   environment {
-    // Tell npm to use a local cache without touching any system files
     npm_config_cache = './npm-cache'
   }
 
