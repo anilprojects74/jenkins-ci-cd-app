@@ -14,19 +14,26 @@ pipeline {
 
     stage('Install Dependencies') {
       steps {
-        sh 'npm install' 
+        dir('frontend') {
+          sh 'npm install' 
+        }
+        
       }
     }
 
     stage('Run Unit Tests') {
       steps {
-        sh 'npm run test'
+        dir('frontend') {
+          sh 'npm run test' 
+        }
       }
     }
 
     stage('Build (Optional)') {
       steps {
-        sh 'npm run build'
+        dir('frontend') {
+          sh 'npm run build'
+        }
       }
     }
   }
