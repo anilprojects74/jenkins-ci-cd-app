@@ -40,11 +40,11 @@ pipeline {
 
   post {
     always {
-      junit 'test-results/*.xml'
-      echo 'Pipeline finished.'
+      junit 'frontend/test-results/results.xml'
     }
     failure {
       echo 'Tests or build failed.'
     }
   }
+
 }

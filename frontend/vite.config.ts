@@ -6,6 +6,8 @@ export default defineConfig({
   plugins: [vue()],
   base: '',
   test: {
-    environment: 'jsdom'
+    environment: 'jsdom',
+    reporters: ['default', 'junit'],
+    outputFile: 'test-results/results.xml'
   }
 })
